@@ -24,41 +24,41 @@ public class Program {
 				+ "INNER JOIN tb_order_product ON tb_order.id = tb_order_product.order_id "
 				+ "INNER JOIN tb_product ON tb_product.id = tb_order_product.product_id");
 		
-		Map<Long, Order> map = new HashMap<>();
-		Map<Long, Product> prods = new HashMap<>();
+		Map<Long, Order> mapOrders = new HashMap<>();
+		Map<Long, Product> mapProducts = new HashMap<>();
 		
 		while (rs.next()) {
 			
 			Long orderId = rs.getLong("order_id");
 			
-			if (map.get(orderId) == null) {
+			if (mapOrders.get(orderId) == null) {
 				
 				Order order = instantiateOrder(rs);
 				
-				map.put(orderId, order);
+				mapOrders.put(orderId, order);
 				
 			}
 			
 			Long productId = rs.getLong("product_id");
 			
-			if (prods.get(productId) == null) {
+			if (mapProducts.get(productId) == null) {
 				
 				Product p = instantiateProduct(rs);
 				
-				prods.put(productId, p);
+				mapProducts.put(productId, p);
 				
 			}
 			
 			
-			map.get(orderId).getProducts().add(prods.get(productId));
+			mapOrders.get(orderId).getProducts().add(mapProducts.get(productId));
 			
 		}
 			
-		for (Long orderId : map.keySet()) {
+		for (Long orderId : mapOrders.keySet()) {
 			
-			System.out.println(map.get(orderId));
+			System.out.println(mapOrders.get(orderId));
 			
-			for (Product p : map.get(orderId).getProducts()) {
+			for (Product p : mapOrders.get(orderId).getProducts()) {
 				System.out.println(p);
 			}
 			
