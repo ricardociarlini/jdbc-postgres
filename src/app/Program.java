@@ -83,15 +83,15 @@ public class Program {
 
 	private static Product instantiateProduct(ResultSet rs) throws SQLException {
 
-		Product p = new Product();
+		Product product = new Product();
 		
-		p.setId(rs.getLong("product_id"));
-		p.setName(rs.getString("name"));
-		p.setDescription(rs.getString("description"));
-		p.setPrice(rs.getDouble("price"));
-		p.setImageUri(rs.getString("image_uri"));
+		product.setId(rs.getLong("product_id"));
+		product.setName(rs.getString("name"));
+		product.setDescription(rs.getString("description"));
+		product.setPrice(rs.getDouble("price"));
+		product.setImageUri(rs.getString("image_uri"));
 		
-		return p;
+		return product;
 		
 	}
 	
