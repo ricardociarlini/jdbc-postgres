@@ -1,5 +1,3 @@
-# Revisão de OO e SQL
-
 - Servidor Postgres
 - pgAdmin
 
